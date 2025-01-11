@@ -1,1 +1,1 @@
-Add and include the C++ files for the Persona Component to your project source code.
+Add and include the C++ files for the Iskin Component to your project source code.

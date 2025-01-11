@@ -1,32 +1,32 @@
-# Persona-UnrealEngine
+# Iskin-UnrealEngine
 
 ## Generative AI Agents Developer Contest by NVIDIA and LangChain
 This project was initially developed for the Generative AI Agents Developer Contest by NVIDIA and LangChain. It received an honorable mention and was among the top 10 projects for the competition; [list of all the winners](https://www.nvidia.com/en-us/ai-data-science/generative-ai/developer-contest-with-langchain/). 
 
 ## Introduction
-**Persona** is a project developed with the aim to integrate Large-Language-Models and Unreal Engine, to power dynamic and immersive dialogues for characters in video games, without the need to create complex dialogue trees. At its core, Persona is an Unreal Engine component that can be attached to any actor within the game world. The component can then communicate with an LLM that is optimized and accelerated by NVIDIA and customized using the LangChain Framework. 
+**Iskin** is a project developed with the aim to integrate Large-Language-Models and Unreal Engine, to power dynamic and immersive dialogues for characters in video games, without the need to create complex dialogue trees. At its core, Iskin is an Unreal Engine component that can be attached to any actor within the game world. The component can then communicate with an LLM that is optimized and accelerated by NVIDIA and customized using the LangChain Framework. 
 
 ## How it Works
 ### NVIDIA and LangChain
-This project is divided into two parts. The first is a generative AI application that uses LangChain and Mixtral-8x22b-Instruct-v0.1 LLM, hosted on NVIDIA NIM, to allow for the creation of Personas that can be chatted with seamlessly. This application takes the powerful tools provided by LangChain to setup conversation chains that help structure the conversation based on the given input. A custom prompt template is defined to structure the input for the language model. Additionally, a custom memory class is extendend from LangChain's existing 'ConversationBufferMemory' class, to provide memory storage, where memory can be written to and loaded from files, allowing for consistent interactions across sessions. This application can be interacted with through a local API built using FastAPI.
+This project is divided into two parts. The first is a generative AI application that uses LangChain and Mixtral-8x22b-Instruct-v0.1 LLM, hosted on NVIDIA NIM, to allow for the creation of Iskins that can be chatted with seamlessly. This application takes the powerful tools provided by LangChain to setup conversation chains that help structure the conversation based on the given input. A custom prompt template is defined to structure the input for the language model. Additionally, a custom memory class is extendend from LangChain's existing 'ConversationBufferMemory' class, to provide memory storage, where memory can be written to and loaded from files, allowing for consistent interactions across sessions. This application can be interacted with through a local API built using FastAPI.
 
 ### Unreal Engine
-The second part of this project deals with Unreal Engine. A custom component called Persona Component is created using C++ within the engine. This component can be attached to any character or actor within the game-world (in Unreal Engine an actor is any object that can be placed into a level). The Persona component allows the user to give a character their own unique background, and the component contains necessary functions that allow for the character to interact with the game world with the use of LLM-generated responses. It does this by communicating with the API that was created in the first part. The help of LangChain allows for these interactions to be stored in a memory archive for each individual character so that they remember previous conversations and any useful data.
+The second part of this project deals with Unreal Engine. A custom component called Iskin Component is created using C++ within the engine. This component can be attached to any character or actor within the game-world (in Unreal Engine an actor is any object that can be placed into a level). The Iskin component allows the user to give a character their own unique background, and the component contains necessary functions that allow for the character to interact with the game world with the use of LLM-generated responses. It does this by communicating with the API that was created in the first part. The help of LangChain allows for these interactions to be stored in a memory archive for each individual character so that they remember previous conversations and any useful data.
 
 ### Key Directories and Files
 
 - **root/**: Project root
   - `app.py`: The main FastAPI application file.
   - `model.py`: Initializes the LLM used for the application (The API key is loaded here)
-  - `persona_memory.py`: Custom memory class used for this project
+  - `Iskin_memory.py`: Custom memory class used for this project
   - `prompt_template.py`: Customizable prompt template to structure LLM's responses
 
-- **PersonaComponent_UE/**: Contains the standalone Persona Component (Can be included in your own UE project)
-  - `PersonaComponent.h`: Header file for the Persona Component in Unreal Engine.
-  - `PersonaComponent.cpp`: Source file for the Persona Component in Unreal Engine.
+- **IskinComponent_UE/**: Contains the standalone Iskin Component (Can be included in your own UE project)
+  - `IskinComponent.h`: Header file for the Iskin Component in Unreal Engine.
+  - `IskinComponent.cpp`: Source file for the Iskin Component in Unreal Engine.
 
 - **DemoProjectFiles/**: Contains the Demo/Sample project files for Unreal Engine
-  - `PersonaDemo.uproject`: Unreal Engine project file for the demo (This can be opened using Unreal Engine to run the demo).
+  - `IskinDemo.uproject`: Unreal Engine project file for the demo (This can be opened using Unreal Engine to run the demo).
   - `Content/`: Directory for Unreal Engine content assets.
   - `Config/`: Configuration files for the Unreal Engine project.
   - `Source/`: Source code for the Unreal Engine project.
@@ -34,15 +34,15 @@ The second part of this project deals with Unreal Engine. A custom component cal
 ## Installation (Windows only)
 This repository contains:
 - All the necessary files to run the local API for LLM inference.
-- Persona component header and .cpp files for Unreal Engine (created and tested in UE 5.4).
-- A demo Unreal Engine project that demonstrates the Persona Component and its current capabilities right out of the box.
+- Iskin component header and .cpp files for Unreal Engine (created and tested in UE 5.4).
+- A demo Unreal Engine project that demonstrates the Iskin Component and its current capabilities right out of the box.
 
 
 
 ### 1. Clone the Repository
 
 ```
-git clone https://github.com/Haqquee/Persona-UnrealEngine
+git clone 
 ```
 
 ### 2. Install the Dependencies:
@@ -73,56 +73,56 @@ Once the API is up and running, it is possible to start interacting with it outs
 <details>
 <summary>API Endpoints:</summary>
 
-- Create a Persona:
-Create a new Persona by sending POST request to /create_persona with the persona's name and background.
+- Create a ISKIN:
+Create a new Iskin by sending POST request to /create_Iskin with the Iskin's name and background.
 
 ```
-POST /create_persona
+POST /create_Iskin
 {
-  "name": "Mervin",
+  "name": "ORION",
   "background": "Astronaut exploring the unknown."
 }
 ```
 
-- Chat with Persona:
-Chat with a Persona by sending POST request to /chat.
+- Chat with Iskin:
+Chat with a Iskin by sending POST request to /chat.
 
 ```
 POST /chat
 {
-  "name": "Mervin",
+  "name": "ORION",
   "input": "Tell me about your last mission."
 }
 ```
 
-- Clear Persona's Memory:
-Clear a Persona's memory by sending POST request to /clear_history.
+- Clear Iskin's Memory:
+Clear a Iskin's memory by sending POST request to /clear_history.
 
 ```
 POST /clear_history
 {
-  "name": "Mervin"
+  "name": "ORION"
 }
 ```
 
-- Delete a Persona:
-Delete a Persona by sending DELETE request to /delete_persona
+- Delete a Iskin:
+Delete a Iskin by sending DELETE request to /delete_Iskin
 
 ```
-DELETE /delete_persona
+DELETE /delete_Iskin
 {
-  "name": "Mervin"
+  "name": "ORION"
 }
 ```
 </details>
 
 ### 5. Connecting to Unreal Engine:
-If you do not have development experience with Unreal Engine or you want to just test the component, it is recommended to move on to the [Demo Project Section](#7-demo-project) which provides steps to use the demo project. Otherwise, here are the  steps to set it up for your own project:
+If you do not have development experience with Unreal Engine or you want to just test the component, it is recommended to move on to the which provides steps to use the demo project. Otherwise, here are the  steps to set it up for your own project:
 
 <details>
-<summary>Initialize the Persona Component for your own UE Project:</summary>
+<summary>Initialize the Iskin Component for your own UE Project:</summary>
 
-1. Copy the Persona Component's header and .cpp files into your Unreal Engine project code files and/or include them in your code. Your project must have C++ enabled.
+1. Copy the Iskin Component's header and .cpp files into your Unreal Engine project code files and/or include them in your code. Your project must have C++ enabled.
 
 Important Note:
 It is important to include both the ```Http``` and the ```Json``` modules within your project's ```Build.cs``` file for proper communication with the API. Sample ```Build.cs``` file:
@@ -141,27 +141,27 @@ public class NPC_Chatbot_Demo : ModuleRules
 }
 ```
 
-2. Attach the Persona Component to the desired actor or character within the Unreal Engine editor. This can be done through either Blueprints or C++.
+2. Attach the Iskin Component to the desired actor or character within the Unreal Engine editor. This can be done through either Blueprints or C++.
 3. Modify the component's properties to set the character's name and background. Again, these properties are exposed to Blueprints, meaning that can be modified through Blueprints or directly through C++.
 
 </details>
 
 <details>
-<summary>Using the Persona Component:</summary>
+<summary>Using the Iskin Component:</summary>
 
 1. **Generate Response Function:**
-The Persona Component uses the function ```GenerateResponse(FString& UserInput)``` to take any input and sends an HTTP request to the API. The response generated by the LLM is then sent back to the Engine, which processes the request and outputs it as string.  The function then uses a delegate to broadcast the received message.
+The Iskin Component uses the function ```GenerateResponse(FString& UserInput)``` to take any input and sends an HTTP request to the API. The response generated by the LLM is then sent back to the Engine, which processes the request and outputs it as string.  The function then uses a delegate to broadcast the received message.
 
 2. **Setting up the Delegate:**
 The delegate needs to be binded to a function in a class that will utilize the ```GenerateResponse``` function. For example, if you have a UI, and want the text generated by the LLM to be displayed into that UI (similar to what the demo project does), you can do the following:
 
 ```
-void UExampleUIClass::SetupPersonaComponent(UPersonaComponent* PersonaComponent)
+void UExampleUIClass::SetupIskinComponent(UIskinComponent* IskinComponent)
 {
-    if (PersonaComponent)
+    if (IskinComponent)
     {
-        PersonaComponent->GenerateResponse("Sample Request");
-        PersonaComponent->OnMessageReceived.AddDynamic(this, &UExampleUIClass::HandleMessage);
+        IskinComponent->GenerateResponse("Sample Request");
+        IskinComponent->OnMessageReceived.AddDynamic(this, &UExampleUIClass::HandleMessage);
     }
 }
 
@@ -176,13 +176,13 @@ void UExampleUIClass::HandleMessage(const FString& Message)
 </details>
 
 ### 6. Demo Project
-A demo Unreal Engine project is included in this repository to give an example on how the Persona Component can be used. It sets up blueprints for the  Player, NPCs, UI along with the necessary functions for interactions between the Player and the Persona.
+A demo Unreal Engine project is included in this repository to give an example on how the Iskin Component can be used. It sets up blueprints for the  Player, NPCs, UI along with the necessary functions for interactions between the Player and the Iskin.
 1. If you do not have Unreal Engine 5.4, it can be downloaded for free through the [Epic Games Launcher](https://www.unrealengine.com/en-US/download). To use Unreal Engine there are Hardware and Software requirements and prerequisites, see the [Hardware and Software Specifications for UE](https://dev.epicgames.com/documentation/en-us/unreal-engine/hardware-and-software-specifications-for-unreal-engine).
 2. Launch Unreal Engine, which will open the project browser. On the bottom right, click the 'browse' button, to find and open the Unreal Engine Project file ```NPC_Chatbot_Demo``` included in this repository.
 3. Given you have all the prerequisites mentioned in step 1, the project should start to compile (it may take a couple of minutes depending on hardware). If prompted, accept the rebuild option.
 4. Once the project is opened, you can play the level in the editor.
 - Use ```W```, ```A```, ```S```, ```D``` to move the player, and ```Space``` to jump.
-- Hold ```E``` to interact with an NPC that has a Persona.
+- Hold ```E``` to interact with an NPC that has a Iskin.
 - Type text into the chatbox and press enter to chat with the Character.
 
 ## Current Limitations and Future Improvements
